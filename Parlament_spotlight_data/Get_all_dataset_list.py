@@ -20,6 +20,19 @@ request = urllib2.Request('https://www.hlidacstatu.cz/api/v1/Datasets', headers=
 response_body = json.load(urllib2.urlopen(request)) # Request returns json type, loading json
 Data_sets_info = json.dumps(response_body, indent=4, sort_keys=True, ensure_ascii=False) # Setting json file into readable format
 # Note: ensure_ascii=False is important so that Czech letters are printed correctly
-print(Data_sets_info) # Printing
+
+### Viewing information about available datasets
+# All datasets
+#print(Data_sets_info) # Printing information about all datasets
+
+# Datasets of potential interest
+# dataset_indx = [0,1,25,29,31,35,42]
+# for i in dataset_indx:
+#   print(json.dumps(response_body[i], indent=4, sort_keys=True, ensure_ascii=False))
+
+# Datasets of interest
+dataset_indx = [0, 35, 42]
+for i in dataset_indx:
+  print(json.dumps(response_body[i], indent=4, sort_keys=True, ensure_ascii=False))
 
 

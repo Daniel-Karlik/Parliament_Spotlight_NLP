@@ -1,4 +1,4 @@
-# Getting data entries in dataset stenozaznamy-psp (steno záznamy poslanecké sněmovny)
+# Getting data entries in dataset stenozaznamy-psp (stenozáznamy poslanecké sněmovny)
 
 # Loading packages for data scraping
 import urllib.request as urllib2
@@ -23,9 +23,12 @@ headers = {
     'Authorization': 'Token 30344472ba9c4aeda642e3ea0a276dfe'
 }
 
+# Name of dataset to download data from
+dataset = "stenozaznamy-psp"
+
 ### Setting time window of date to get
 request = urllib2.Request(
-    f'https://www.hlidacstatu.cz/api/v1/DatasetSearch/stenozaznamy-psp?q=datum%3A[*+TO+{datetime.date.today()}]&page=1&sort=datum&desc=1',
+    f'https://www.hlidacstatu.cz/api/v1/DatasetSearch/{dataset}?q=datum%3A[*+TO+{datetime.date.today()}]&page=1&sort=datum&desc=1',
     headers=headers)  # Reguesting first page of results ordered from the latest date
 response_body = json.load(urllib2.urlopen(request))  # Request returns json type, loading json
 # Getting the latest date from data
@@ -35,7 +38,7 @@ date_right = datetime.date(date_right.year, date_right.month, calendar.monthrang
 
 # Requesting first page of results ordered from the oldest date
 request = urllib2.Request(
-    f'https://www.hlidacstatu.cz/api/v1/DatasetSearch/stenozaznamy-psp?q=datum%3A[*+TO+{datetime.date.today()}]&page=1&sort=datum&desc=0',
+    f'https://www.hlidacstatu.cz/api/v1/DatasetSearch/{dataset}?q=datum%3A[*+TO+{datetime.date.today()}]&page=1&sort=datum&desc=0',
     headers=headers)
 response_body = json.load(urllib2.urlopen(request))  # Request returns json type, loading json
 # Getting the oldest date of data entry
@@ -63,7 +66,7 @@ while date_right.year >= year_of_oldest_record:
         page += 1
         # Reguesting data from hlidac statu in time window defined by interval <date_left, date_right> and from page defined in page
         request = urllib2.Request(
-            f'https://www.hlidacstatu.cz/api/v1/DatasetSearch/stenozaznamy-psp?q=datum%3A[{date_left}+TO+{date_right}]&page={page}&sort=datum&desc=1',
+            f'https://www.hlidacstatu.cz/api/v1/DatasetSearch/{dataset}?q=datum%3A[{date_left}+TO+{date_right}]&page={page}&sort=datum&desc=1',
             headers=headers)
         response_body = json.load(urllib2.urlopen(request))  # Request returns json type, loading json
 
@@ -83,6 +86,7 @@ while date_right.year >= year_of_oldest_record:
         months=time_window_to_get - 1)  # Moving left bound by number of months defined in time_window_to_get-1
 
 # Writing sample data to json file format
-output_file_name = os.path.join('data', 'sample_stenozaznamy_psp.json')
+file_name = dataset.replace("-", "_")
+output_file_name = os.path.join('data', f'{file_name}.json')
 with open(output_file_name, "w") as outfile:
     json.dump(stenozaznamy_psp, outfile)
