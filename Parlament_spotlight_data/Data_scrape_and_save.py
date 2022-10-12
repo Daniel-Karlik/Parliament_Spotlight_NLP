@@ -31,12 +31,6 @@ year_of_oldest_record1 = 2022
 year_of_oldest_record2 = 2022
 year_of_oldest_record3 = 2022
 
-# Define time window in months from which you want to get the data
-# e.g. Taking window of 1 months (from first day of the month to last day of the month)
-time_window_to_get1 = 1
-time_window_to_get2 = 1
-time_window_to_get3 = 1
-
 # Define name of relative path for saving data
 path1 = "data"
 path2 = "data"
@@ -56,24 +50,24 @@ headers = {
 # Note: Need to revise this later
 ssl._create_default_https_context = ssl._create_unverified_context
 
-
-
-
-def data_scraper(dataset, year_of_oldest_record, time_window_to_get):
+def data_scraper(dataset, year_of_oldest_record):
     # Request to url with data is divided into pages, where maximum number of pages is 200 if number of requested
     # records surpasses 200 pages, they are truncated, this means we cannot simply request full dataset from the url.
-    # We circumvent this by sequentially getting data from url for each month.
+    # We circumvent this by sequentially getting data from url for each day.
+    # Note: Getting data for each month was considered, but in case of vyjadreni-politiku dataset, the number of entries
+    #       exceed 200 pages.
 
-    ### Setting time window of date to get data
+    ### Getting date of most recent record and year of oldest record
     request = urllib2.Request(
         f'https://www.hlidacstatu.cz/api/v1/DatasetSearch/{dataset}?q=datum%3A[*+TO+{datetime.date.today()}]&page=1&sort=datum&desc=1',
-        headers=headers)  # Reguesting first page of results ordered from the latest date
+        headers=headers)  # Requesting first page of results ordered from the latest date
     response_body = json.load(urllib2.urlopen(request))  # Request returns json type, loading json
-    # Getting the latest date from data
-    date_right = datetime.datetime.strptime(response_body["results"][1]["datum"][:10], "%Y-%m-%d").date()
-    # Setting right bound of date window to last day of the month of last entry in dataset
-    date_right = datetime.date(date_right.year, date_right.month,
-                               calendar.monthrange(date_right.year, date_right.month)[1])
+    # Getting the latest date from data and adding +1 day to it
+    # this is done because of format of request to url
+    # e.g. request for date 12-10-2022 - 13-10-2022 will get data for date 12-10-2022
+    date_right = datetime.datetime.strptime(response_body["results"][1]["datum"][:10], "%Y-%m-%d").date() + relativedelta(days=1)
+    # Subtracting one day from right bound to receive left bound
+    date_left = date_right + relativedelta(days=-1)
 
     # If statement tests if there is user defined limit to the oldest record if not then get it from the data
     if year_of_oldest_record == []:
@@ -83,52 +77,38 @@ def data_scraper(dataset, year_of_oldest_record, time_window_to_get):
             headers=headers)
         response_body = json.load(urllib2.urlopen(request))  # Request returns json type, loading json
 
-        # Getting the oldest date of data entry
+        # Getting the oldest year of data entry
         year_of_oldest_record = datetime.datetime.strptime(response_body["results"][1]["datum"][:10], "%Y-%m-%d").year
-
-    time_window_to_get = -time_window_to_get  # Making time_window_to_get negative, so that addition to current date
-    # leads to subtractions
-    time_window_to_get += 1  # Adding +1 to time_window_to_get so that the subtraction of months leds to correct
-    # number of months we want to take into account
-
-    # Subtracting number of months defined in time_window_to_get from right bound to receive left bound
-    date_left = date_right + relativedelta(months=time_window_to_get)
-    # Setting day of left time bound to first day of the month
-    date_left = datetime.datetime.strptime(str(date_left)[:7] + "-1", "%Y-%m-%d").date()
-
 
     ### Getting data
     # Initializing dictionary for saving downloaded data
     data = {"results": []}
 
-    # While date of right bound is bigger than year_of_oldest_record from data/set by user
+    # While date of right bound is bigger than year_of_oldest_record from data/set by user download data
     while date_right.year >= year_of_oldest_record:
-        # Getting data sequentially for each month and each page
+        # Getting data sequentially for each day and each page
         page = 0
         while True:
             # Incrementing number of pages
             page += 1
-            # Reguesting data from hlidac statu in time window defined by interval <date_left, date_right> and from
+            # Requesting data from hlidac statu in time window defined by interval <date_left, date_right} (this means excluding right bound) and from
             # page defined in page
             request = urllib2.Request(
-                f'https://www.hlidacstatu.cz/api/v1/DatasetSearch/{dataset}?q=datum%3A[{date_left}+TO+{date_right}]&page={page}&sort=datum&desc=1',
+                f'https://www.hlidacstatu.cz/api/v1/DatasetSearch/{dataset}?q=datum%3A[{date_left}+TO+{date_right}'+'}'+f'&page={page}&sort=datum&desc=1',
                 headers=headers)
             response_body = json.load(urllib2.urlopen(request))  # Request returns json type, loading json
 
             # If results in response body is empty: break
             if response_body["results"] == []:
                 break
-            # Adding results of response_body to vyjadreni_politiku
+            # Adding results of response_body to data
             data["results"] += response_body["results"]
 
-        # Moving date window back in time, by number of months defined in time_window_to_get-1
+        # Moving date window back in time by one day
         date_right = date_right + relativedelta(
-            months=time_window_to_get - 1)  # Moving right bound by number of months defined in time_window_to_get-1
-        date_right = datetime.date(date_right.year, date_right.month,
-                                   calendar.monthrange(date_right.year, date_right.month)[
-                                       1])  # Setting day of date_right to last day of the month
+            days=-1)  # Moving right bound by one day
         date_left = date_left + relativedelta(
-            months=time_window_to_get - 1)  # Moving left bound by number of months defined in time_window_to_get-1
+            days=-1)  # Moving left bound by one day
 
     return data
 
@@ -142,15 +122,15 @@ def saving_data(data, file_name, path):
         json.dump(data, outfile)
 
 # Getting data from vyjadreni-politiku
-data1 = data_scraper(dataset1, year_of_oldest_record1, time_window_to_get1)
+data1 = data_scraper(dataset1, year_of_oldest_record1)
 # Getting data from stenozaznamy-psp
-data2 = data_scraper(dataset2, year_of_oldest_record2, time_window_to_get2)
+data2 = data_scraper(dataset2, year_of_oldest_record2)
 # Getting data from tiskove-konference-vlady
-data3 = data_scraper(dataset3, year_of_oldest_record3, time_window_to_get3)
+data3 = data_scraper(dataset3, year_of_oldest_record3)
 
 # Saving data from vyjadreni-politiku
 saving_data(data1, dataset1, path1)
 # Saving data from vyjadreni-politiku
 saving_data(data2, dataset2, path2)
 # Saving data from vyjadreni-politiku
-saving_data(data2, dataset2, path3)
+saving_data(data3, dataset2, path3)
