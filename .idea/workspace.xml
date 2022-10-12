@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="31f59de4-3385-4a5e-8d72-97a9f629c4bb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Parlament_spotlight_data/Data_scrape_and_save.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Parlament_spotlight_data/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/Get_data_stenozaznamy_psp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/Get_data_vajadreni_politiku.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/data/sample_stenozaznamy_psp.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2FdecruyO3bWdd3okt5kYpJjfJz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitHub/Parliament_Spotlight_NLP&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="31f59de4-3385-4a5e-8d72-97a9f629c4bb" name="Changes" comment="" />
+      <created>1664826472573</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664826472573</updated>
+      <workItem from="1664826475271" duration="565000" />
+      <workItem from="1665424721188" duration="8226000" />
+      <workItem from="1665599056401" duration="908000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Parlament_spotlight_data/Data_scrape_and_save.py</url>
+          <line>146</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Get_data_vajadreni_politiku.coverage" NAME="Get_data_vajadreni_politiku Coverage Results" MODIFIED="1665428068803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parlament_spotlight_data" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Get_data_stenozaznamy_psp.coverage" NAME="Get_data_stenozaznamy_psp Coverage Results" MODIFIED="1665430400121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parlament_spotlight_data" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Data_scrape_and_save.coverage" NAME="Data_scrape_and_save Coverage Results" MODIFIED="1665599953130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parlament_spotlight_data" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Read_data_sample.coverage" NAME="Read_data_sample Coverage Results" MODIFIED="1665425243291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parlament_spotlight_data" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Get_data_tiskove_konference_vlady.coverage" NAME="Get_data_tiskove_konference_vlady Coverage Results" MODIFIED="1665428782881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parlament_spotlight_data" />
+  </component>
+</project>
