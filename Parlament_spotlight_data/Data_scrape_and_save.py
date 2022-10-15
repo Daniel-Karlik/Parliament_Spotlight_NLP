@@ -27,9 +27,9 @@ dataset3 = "tiskove-konference-vlady"  # records of press conferences of the gov
 #       2. vyjadreni-politiku -> medium size
 #       3. tiskove-konference-vlady -> small dataset
 
-year_of_oldest_record1 = 2022
-year_of_oldest_record2 = 2022
-year_of_oldest_record3 = 2022
+year_of_oldest_record1 = []
+year_of_oldest_record2 = []
+year_of_oldest_record3 = []
 
 # Define name of relative path for saving data
 path1 = "data"
@@ -108,8 +108,7 @@ def data_scraper(dataset, year_of_oldest_record):
         date_right = date_right + relativedelta(
             days=-1)  # Moving right bound by one day
         date_left = date_left + relativedelta(
-            days=-1)  # Moving left bound by one day
-
+            days=-1)  # Movig left bound by one day
     return data
 
 
@@ -121,16 +120,19 @@ def saving_data(data, file_name, path):
     with open(output_file_name, "w") as outfile:
         json.dump(data, outfile)
 
-# Getting data from vyjadreni-politiku
-data1 = data_scraper(dataset1, year_of_oldest_record1)
+# # Getting data from vyjadreni-politiku
+# data1 = data_scraper(dataset1, year_of_oldest_record1)
+# # Saving data from vyjadreni-politiku
+# saving_data(data1, dataset1, path1)
+
 # Getting data from stenozaznamy-psp
 data2 = data_scraper(dataset2, year_of_oldest_record2)
-# Getting data from tiskove-konference-vlady
-data3 = data_scraper(dataset3, year_of_oldest_record3)
-
-# Saving data from vyjadreni-politiku
-saving_data(data1, dataset1, path1)
-# Saving data from vyjadreni-politiku
+# Saving data from stenozaznamy-psp
 saving_data(data2, dataset2, path2)
-# Saving data from vyjadreni-politiku
-saving_data(data3, dataset2, path3)
+
+# # Getting data from tiskove-konference-vlady
+# data3 = data_scraper(dataset3, year_of_oldest_record3)
+# # Saving data from tiskove-konference-vlady
+# saving_data(data3, dataset3, path3)
+
+
