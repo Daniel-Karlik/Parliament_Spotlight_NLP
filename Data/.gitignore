@@ -12,6 +12,7 @@
 
 # Data
 data/
+Access_token/Token_info.json
 
 # dotenv
 .env
