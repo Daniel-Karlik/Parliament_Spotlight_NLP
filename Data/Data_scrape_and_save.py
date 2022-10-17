@@ -33,7 +33,7 @@ dataset_download = [1]  # E.g. if you want to download only dataset 0 and 2 sele
 #       2. vyjadreni-politiku -> medium size
 #       3. tiskove-konference-vlady -> small dataset
 
-years_of_oldest_record = ["NA", "NA", "NA"]
+years_of_oldest_record = ["NA", 2021, "NA"]
 
 # Define name of relative path for saving data
 path = "data"
@@ -73,15 +73,15 @@ def data_scraper(dataset, year_of_oldest_record):
     #       exceed 200 pages.
 
     ### Getting date of most recent record and year of oldest record
-    # f'https://api.hlidacstatu.cz/api/v2/datasety/stenozaznamy-psp/hledat?dotaz=datum%3A[*+TO+{datetime.date.today()}]&strana=1&sort=datum&desc=1'
+
     request = urllib2.Request(
-        f'https://www.hlidacstatu.cz/api/v1/DatasetSearch/{dataset}?q=datum%3A[*+TO+{datetime.date.today()}]&page=1&sort=datum&desc=1',
+            f'https://api.hlidacstatu.cz/api/v2/datasety/{dataset}/hledat?dotaz=datum%3A[*+TO+{datetime.date.today()}]&strana=1&sort=datum&desc=1',
 
         headers=headers)  # Requesting first page of results ordered from the latest date
     response_body = json.load(urllib2.urlopen(request))  # Request returns json type, loading json
     # Getting the latest date from data and adding +1 day to it
     # this is done because of format of request to url
-    # e.g. request for date 12-10-2022 - 13-10-2022 will get data for date 12-10-2022
+    # e.g. request for date 12-10-2022 - 13-10-2022 will get data for date 13-10-2022
     date_right = datetime.datetime.strptime(response_body["results"][1]["datum"][:10],
                                             "%Y-%m-%d").date() + relativedelta(days=1)
     # Subtracting one day from right bound to receive left bound
@@ -91,7 +91,7 @@ def data_scraper(dataset, year_of_oldest_record):
     if year_of_oldest_record == "NA":
         # Requesting first page of results ordered from the oldest date
         request = urllib2.Request(
-            f'https://www.hlidacstatu.cz/api/v1/DatasetSearch/{dataset}?q=datum%3A[*+TO+{datetime.date.today()}]&page=1&sort=datum&desc=0',
+            f'https://api.hlidacstatu.cz/api/v2/datasety/{dataset}/hledat?dotaz=datum%3A[*+TO+{datetime.date.today()}]&strana=1&sort=datum&desc=0',
             headers=headers)
         response_body = json.load(urllib2.urlopen(request))  # Request returns json type, loading json
 
@@ -112,7 +112,7 @@ def data_scraper(dataset, year_of_oldest_record):
             # Requesting data from HlidacStatu.cz in time window defined by interval <date_left, date_right} (this means excluding right bound) and from
             # page defined in page
             request = urllib2.Request(
-                f'https://www.hlidacstatu.cz/api/v1/DatasetSearch/{dataset}?q=datum%3A[{date_left}+TO+{date_right}' + '}' + f'&page={page}&sort=datum&desc=1',
+                f'https://api.hlidacstatu.cz/api/v2/datasety/{dataset}/hledat?dotaz=datum%3A[{date_left}+TO+{date_right}' + '}' + f'&strana={page}&sort=datum&desc=',
                 headers=headers)
             response_body = json.load(urllib2.urlopen(request))  # Request returns json type, loading json
 
@@ -145,7 +145,13 @@ def saving_data(data, file_name, path):
     with open(output_file_name, "wb") as outfile:
         pickle.dump(data, outfile, protocol=pickle.HIGHEST_PROTOCOL) # Saving data in picke format,
                                                                      # using highest protocol which is version 5 and was introduced in python 3.8
-
+def date_range(start, end, intv):
+    start = datetime.strptime(start,"%Y%m%d")
+    end = datetime.strptime(end,"%Y%m%d")
+    diff = (end  - start ) / intv
+    for i in range(intv):
+        yield (start + diff * i).strftime("%Y%m%d")
+    yield end.strftime("%Y%m%d")
 
 
 for i in dataset_download:

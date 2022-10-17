@@ -5,23 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31f59de4-3385-4a5e-8d72-97a9f629c4bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Data/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/Access_token/Token_info_template.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/Data_scrape_and_save.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/Get_all_dataset_list.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/Read_data_sample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Parliament_Spotlight_NLP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Parliament_Spotlight_NLP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/.idea/Parlament_spotlight_data.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/Data_scrape_and_save.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/Get_all_dataset_list.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parlament_spotlight_data/Read_data_sample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Access_token/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Access_token/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Data_scrape_and_save.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Data_scrape_and_save.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Get_all_dataset_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Get_all_dataset_list.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +23,17 @@
         <option value="Python Script" />
         <option value="package.json" />
       </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
     </option>
   </component>
   <component name="Git.Settings">
@@ -58,7 +58,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -76,18 +76,34 @@
       <workItem from="1665826743278" duration="1844000" />
       <workItem from="1665913877535" duration="17176000" />
       <workItem from="1665937468123" duration="1429000" />
-      <workItem from="1666022071915" duration="2638000" />
+      <workItem from="1666022071915" duration="5199000" />
+      <workItem from="1666028126221" duration="175000" />
+      <workItem from="1666028304213" duration="1611000" />
+      <workItem from="1666030587874" duration="1963000" />
+      <workItem from="1666033320482" duration="2789000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Data/Data_scrape_and_save.py</url>
+          <line>145</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Get_data_vajadreni_politiku.coverage" NAME="Get_data_vajadreni_politiku Coverage Results" MODIFIED="1665428068803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parlament_spotlight_data" />
     <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Get_data_stenozaznamy_psp.coverage" NAME="Get_data_stenozaznamy_psp Coverage Results" MODIFIED="1665430400121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parlament_spotlight_data" />
-    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Data_scrape_and_save.coverage" NAME="Data_scrape_and_save Coverage Results" MODIFIED="1666022325431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data" />
-    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Read_data_sample.coverage" NAME="Read_data_sample Coverage Results" MODIFIED="1665937411850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Data_scrape_and_save.coverage" NAME="Data_scrape_and_save Coverage Results" MODIFIED="1666035719048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Read_data_sample.coverage" NAME="Read_data_sample Coverage Results" MODIFIED="1666036041894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data" />
     <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Get_data_tiskove_konference_vlady.coverage" NAME="Get_data_tiskove_konference_vlady Coverage Results" MODIFIED="1665428782881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parlament_spotlight_data" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Get_all_dataset_list.coverage" NAME="Get_all_dataset_list Coverage Results" MODIFIED="1666027646424" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data" />
   </component>
 </project>
