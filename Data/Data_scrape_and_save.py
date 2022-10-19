@@ -4,7 +4,7 @@
 import urllib.request as urllib2
 import ssl
 import json
-import pickle # For saving data in pickle format - much more memory efficient than json
+import pickle  # For saving data in pickle format - much more memory efficient than json
 
 # Loading packages for constructing path to file
 import os.path
@@ -33,13 +33,19 @@ dataset_download = [1]  # E.g. if you want to download only dataset 0 and 2 sele
 #       2. vyjadreni-politiku -> medium size
 #       3. tiskove-konference-vlady -> small dataset
 
-years_of_oldest_record = ["NA", 2021, "NA"]
+years_of_oldest_record = ["NA", "NA", "NA"]
 
 # Define name of relative path for saving data
 path = "data"
 # If relative path doesn't exist create it
 if not os.path.exists(path):
     os.makedirs("data")
+#
+for item in datasets:
+    item = item.replace("-", "_")
+    path_to_dataset = os.path.join(path, item)
+    if not os.path.exists(path_to_dataset):
+        os.makedirs(path_to_dataset)
 
 # Getting authorization token
 with open(os.path.join("Access_token", "Token_info.json")) as infile:
@@ -58,7 +64,7 @@ headers = {
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-def data_scraper(dataset, year_of_oldest_record):
+def data_scraper(dataset, year_of_oldest_record, path):
     # Input:
     #       dataset - string with name of dataset to download
     #       years_of_oldest_record - number representing year of the oldest record we want to download
@@ -72,10 +78,10 @@ def data_scraper(dataset, year_of_oldest_record):
     # Note: Getting data for each month was considered, but in case of vyjadreni-politiku dataset, the number of entries
     #       exceed 200 pages.
 
-    ### Getting date of most recent record and year of oldest record
+    ### Getting date of most recent record and year of the oldest record
 
     request = urllib2.Request(
-            f'https://api.hlidacstatu.cz/api/v2/datasety/{dataset}/hledat?dotaz=datum%3A[*+TO+{datetime.date.today()}]&strana=1&sort=datum&desc=1',
+        f'https://api.hlidacstatu.cz/api/v2/datasety/{dataset}/hledat?dotaz=datum%3A[*+TO+{datetime.date.today()}]&strana=1&sort=datum&desc=1',
 
         headers=headers)  # Requesting first page of results ordered from the latest date
     response_body = json.load(urllib2.urlopen(request))  # Request returns json type, loading json
@@ -101,6 +107,9 @@ def data_scraper(dataset, year_of_oldest_record):
     ### Getting data
     # Initializing dictionary for saving downloaded data
     data = {"results": []}
+    num_of_limit_hit = 0 # Initializing variable to see how many times we hit the 200 page limit
+    max_page = 0 # Intitializing variable to see what was the highest page achieved
+                 # For stenozaznamy-psp its 41
 
     # While date of right bound is bigger than year_of_oldest_record from data/set by user, download data
     while date_right.year >= year_of_oldest_record:
@@ -109,18 +118,44 @@ def data_scraper(dataset, year_of_oldest_record):
         while True:
             # Incrementing number of pages
             page += 1
+
+            ### Incrementing max_page
+            if page >= max_page:
+                max_page = page
+
+
             # Requesting data from HlidacStatu.cz in time window defined by interval <date_left, date_right} (this means excluding right bound) and from
             # page defined in page
             request = urllib2.Request(
-                f'https://api.hlidacstatu.cz/api/v2/datasety/{dataset}/hledat?dotaz=datum%3A[{date_left}+TO+{date_right}' + '}' + f'&strana={page}&sort=datum&desc=',
+                f'https://api.hlidacstatu.cz/api/v2/datasety/{dataset}/hledat?dotaz=datum%3A[{date_left}+TO+{date_right}' + '}' + f'&strana={page}&sort=datum&desc=1',
                 headers=headers)
             response_body = json.load(urllib2.urlopen(request))  # Request returns json type, loading json
 
-            # If results in response body is empty: break
-            if response_body["results"] == []:
+            # If results in response body is empty or next page is 201: break
+            # Note: During download of vyjadreni politiku, we reach limit of 200 pages even though we take data by day
+            #       This is a limitation of api function for download, we have no option but not to concider those tweets
+            #       Also during looking through data, I noticed there are bogus tweets from american accounts containing commercials
+            #       assigned to certain polititians. This will need to be cleaned if we decide to use this.
+            # Testing number of times we reach page 200
+
+            ### Testing how many times we reach page 200
+            if page == 200:
+                num_of_limit_hit += 1
+            # If we reach 200 page or response_body is empty: break
+
+            if not response_body["results"] or page+1 == 201:
                 break
             # Adding results of response_body to data
             data["results"] += response_body["results"]
+
+        # If the date_left is the end of month and data is not empty save data for the month and reset data to empty dictionary
+        # Data are in parts by months because the resulting dictionary is too large to save as one file
+        if (date_right.day == 1) and data["results"]:
+            file_name_part = os.path.join(dataset, dataset + "_month_" + str(date_right)[:7]) # Making name of file in format dataset_month_(YYYY-MM)
+            file_name_part = file_name_part.replace("-", "_") # Replacing - with _
+            saving_data(data, file_name_part, path) # Saving data
+            data = {"results": []} # Reseting data to empty dictionary
+
 
         # Moving date window back in time by one day
         date_right = date_right + relativedelta(
@@ -137,24 +172,14 @@ def saving_data(data, file_name, path):
     #       path - relative path to the folder that file is to be saved to
     # Output:
     #       None
-
-    # Writing sample data to pickle file format
+    # Writing data to pickle file format
     file_name = file_name.replace("-", "_")  # Replace - with _ if there are any
     # This is set up, so you can use dataset string as name of the output file
     output_file_name = os.path.join(path, f'{file_name}.pickle')  # Adding file name to the path of saving files
     with open(output_file_name, "wb") as outfile:
-        pickle.dump(data, outfile, protocol=pickle.HIGHEST_PROTOCOL) # Saving data in picke format,
-                                                                     # using highest protocol which is version 5 and was introduced in python 3.8
-def date_range(start, end, intv):
-    start = datetime.strptime(start,"%Y%m%d")
-    end = datetime.strptime(end,"%Y%m%d")
-    diff = (end  - start ) / intv
-    for i in range(intv):
-        yield (start + diff * i).strftime("%Y%m%d")
-    yield end.strftime("%Y%m%d")
+        pickle.dump(data, outfile, protocol=pickle.HIGHEST_PROTOCOL)  # Saving data in picke format,
+        # using the highest protocol which is version 5 and was introduced in python 3.8
 
 
 for i in dataset_download:
-    data = data_scraper(datasets[i], years_of_oldest_record[i])
-    # Saving data from downloaded dataset
-    saving_data(data, datasets[i], path)
+    data = data_scraper(datasets[i], years_of_oldest_record[i], path)
