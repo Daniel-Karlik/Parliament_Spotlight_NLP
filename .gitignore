@@ -1,1 +1,7 @@
 .env
+.env38
+fasttext
+models
+.vscode
+.ipynb_checkpoints
+*.pickle
