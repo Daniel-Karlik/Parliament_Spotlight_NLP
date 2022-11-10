@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="31f59de4-3385-4a5e-8d72-97a9f629c4bb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package.json" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2FdecruyO3bWdd3okt5kYpJjfJz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/GitHub/Parliament_Spotlight_NLP/Web_app",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Python"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitHub\Parliament_Spotlight_NLP\Web_app\flaskr" />
+      <recent name="D:\GitHub\Parliament_Spotlight_NLP\Web_app\flaskr\templates" />
+      <recent name="D:\GitHub\Parliament_Spotlight_NLP\Web_app\flaskr\templates\templates\blog" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="31f59de4-3385-4a5e-8d72-97a9f629c4bb" name="Changes" comment="" />
+      <created>1664826472573</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664826472573</updated>
+      <workItem from="1664826475271" duration="565000" />
+      <workItem from="1665424721188" duration="8226000" />
+      <workItem from="1665599056401" duration="4448000" />
+      <workItem from="1665639055397" duration="4683000" />
+      <workItem from="1665826743278" duration="1844000" />
+      <workItem from="1665913877535" duration="17176000" />
+      <workItem from="1665937468123" duration="1429000" />
+      <workItem from="1666022071915" duration="5199000" />
+      <workItem from="1666028126221" duration="175000" />
+      <workItem from="1666028304213" duration="1611000" />
+      <workItem from="1666030587874" duration="1963000" />
+      <workItem from="1666033320482" duration="2878000" />
+      <workItem from="1666107475064" duration="5531000" />
+      <workItem from="1666201359147" duration="8977000" />
+      <workItem from="1666288825102" duration="4637000" />
+      <workItem from="1667842286533" duration="9893000" />
+      <workItem from="1667933109873" duration="9089000" />
+      <workItem from="1668017442143" duration="7363000" />
+      <workItem from="1668027559325" duration="795000" />
+      <workItem from="1668028852630" duration="1084000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Get_data_vajadreni_politiku.coverage" NAME="Get_data_vajadreni_politiku Coverage Results" MODIFIED="1665428068803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parlament_spotlight_data" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Get_data_stenozaznamy_psp.coverage" NAME="Get_data_stenozaznamy_psp Coverage Results" MODIFIED="1665430400121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parlament_spotlight_data" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Data_scrape_and_save.coverage" NAME="Data_scrape_and_save Coverage Results" MODIFIED="1666209936696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1667843433261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Web_app/flaskr" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Read_data_sample.coverage" NAME="Read_data_sample Coverage Results" MODIFIED="1666292643357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Get_data_tiskove_konference_vlady.coverage" NAME="Get_data_tiskove_konference_vlady Coverage Results" MODIFIED="1665428782881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parlament_spotlight_data" />
+    <SUITE FILE_PATH="coverage/Parliament_Spotlight_NLP$Get_all_dataset_list.coverage" NAME="Get_all_dataset_list Coverage Results" MODIFIED="1666292939831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data" />
+  </component>
+</project>

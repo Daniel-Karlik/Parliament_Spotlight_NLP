@@ -1,0 +1,20 @@
+<!-- extends 'base.html' tells Jinja that this template should replace the blocks from the base template. -->
+<!--All the rendered content must appear inside block tags that override blocks from the base template. -->
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Register{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="username">Username</label>
+    <!--The input tags are using the required attribute here.
+     This tells the browser not to submit the form until those fields are filled in.  -->
+    <input name="username" id="username" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    <input type="submit" value="Register">
+  </form>
+{% endblock %}
+

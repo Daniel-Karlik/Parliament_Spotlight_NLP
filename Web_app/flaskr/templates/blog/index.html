@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+<!--When a user is logged in, the header block adds a link to the create view.
+ When the user is the author of a post, they’ll see an “Edit” link to the update view for that post.
+ loop.last is a special variable available inside Jinja for loops.
+ It’s used to display a line after each post except the last one, to visually separate them. -->
+
+{% block header %}
+  <h1>{% block title %}Topics{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('blog.create') }}">New</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for post in posts %}
+    <article class="post">
+        <div>
+          <h1><a class="action" href="{{ url_for('politician_names.politician_names') }}">{{ post['title'] }}</a></h1>
+        </div>
+
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
