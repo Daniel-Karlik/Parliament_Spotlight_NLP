@@ -15,3 +15,17 @@ CREATE TABLE post (
   body TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
+
+CREATE TABLE steno_zaznamy (
+  id TEXT NOT NULL,
+  obdobi INTEGER,
+  datum TEXT,
+  schuze INTEGER,
+  celeJmeno TEXT,
+  OsobaId TEXT,
+  funkce TEXT,
+  tema TEXT,
+  prsolovText TEXT,
+  pocetSlov INTEGER,
+  politiciZminky TEXT
+);
